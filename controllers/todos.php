@@ -1,6 +1,7 @@
 <?php
 
 include "./library/response.php";
+include "./models/TodoModel.php";
 
 final class Todo
 {
@@ -17,7 +18,7 @@ final class Todo
         ];
 
         try {
-            $todos = [];
+            $todos = TodoModel::fetchAll();
             $body = ["success" => true, "todos" => $todos];
             echo Response::json($statusCode, $headers, $body);
         } catch (PDOException $exception) {

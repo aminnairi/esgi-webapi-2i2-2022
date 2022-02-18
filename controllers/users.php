@@ -5,10 +5,6 @@ include "./models/UserModel.php";
 
 final class User
 {
-    public function query()
-    {
-    }
-
     /**
      * @example
      * User::get();
