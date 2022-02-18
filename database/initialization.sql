@@ -37,7 +37,7 @@ CREATE TABLE `todos` (
     userId INT NOT NULL REFERENCES users(id),
     title VARCHAR(25) NOT NULL,
     completed BOOLEAN DEFAULT FALSE
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE `photos` (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
