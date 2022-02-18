@@ -1,9 +1,14 @@
 <?php
 
 include "./library/response.php";
+include "./models/UserModel.php";
 
 final class User
 {
+    public function query()
+    {
+    }
+
     /**
      * @example
      * User::get();
@@ -13,12 +18,11 @@ final class User
         $statusCode = 200;
 
         $headers = [
-            "Content-Type" => "application/json",
-            "X-Amin" => "Hello"
+            "Content-Type" => "application/json"
         ];
 
         try {
-            $users = [];
+            $users = UserModel::getAll();
             $body = ["success" => true, "users" => $users];
             echo Response::json($statusCode, $headers, $body);
         } catch (PDOException $exception) {
