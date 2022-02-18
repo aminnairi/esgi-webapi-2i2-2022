@@ -3,8 +3,6 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-include "./library/response.php";
-
 /**
  * @see https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op
  */
@@ -99,4 +97,7 @@ if ($route === "photos") {
     }
 }
 
-echo Response::json(404, ["Content-Type" => "application/json"], "Not found");
+{
+    include "./library/response.php";
+    echo Response::json(404, ["Content-Type" => "application/json"], "Not found");
+}
