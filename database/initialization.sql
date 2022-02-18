@@ -46,3 +46,5 @@ CREATE TABLE `photos` (
     url VARCHAR(50) NOT NULL,
     thumbnailUrl VARCHAR(50) NOT NULL
 ) ENGINE = InnoDB;
+
+INSERT INTO users(name, username, email, phone, website) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://github.com/aminnairi');
