@@ -8,7 +8,8 @@ CREATE TABLE `users` (
     username VARCHAR(25) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone CHAR(10) NOT NULL,
-    website VARCHAR(50) NOT NULL
+    website VARCHAR(50) NOT NULL,
+    password CHAR(60) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE `posts` (
@@ -47,4 +48,4 @@ CREATE TABLE `photos` (
     thumbnailUrl VARCHAR(50) NOT NULL
 ) ENGINE = InnoDB;
 
-INSERT INTO users(name, username, email, phone, website) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://github.com/aminnairi');
+INSERT INTO users(name, username, email, phone, website, password) VALUES('Administrateur', 'ADMINISTRATEUR', 'administrateur@esgi.fr', '0102030405', 'https://github.com/aminnairi', '');
