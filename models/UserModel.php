@@ -20,13 +20,16 @@ class UserModel
         $phone = $userToCreate["phone"];
         $website = $userToCreate["website"];
         $password = password_hash($userToCreate["password"], PASSWORD_BCRYPT);
-        $createUserQuery = $databaseConnection->prepare("INSERT INTO users(name, username, email, phone, website, password) VALUES(':name', ':username', ':email', ':phone', ':website', ':password');");
-        $createUserQuery->bindParam(":name", $name);
-        $createUserQuery->bindParam(":username", $username);
-        $createUserQuery->bindParam(":email", $email);
-        $createUserQuery->bindParam(":phone", $phone);
-        $createUserQuery->bindParam(":website", $website);
-        $createUserQuery->bindParam(":password", $password);
-        $createUserQuery->execute();
+
+        $createUserQuery = $databaseConnection->prepare("INSERT INTO users(name, username, email, phone, website, password) VALUES(:name, :username, :email, :phone, :website, :password);");
+
+        $createUserQuery->execute([
+            "name" => $name,
+            "username" => $username,
+            "email" => $email,
+            "phone" => $phone,
+            "website" => $website,
+            "password" => $password
+        ]);
     }
 }
