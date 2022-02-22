@@ -32,6 +32,8 @@ final class Post
      */
     final public static function posts(): void
     {
+        $json = json_decode(file_get_contents("php://input"));
+
         $statusCode = 200;
 
         $headers = [
@@ -41,6 +43,12 @@ final class Post
         $body = [
             "success" => true
         ];
+
+        PostModel::create([
+            "userId" => $json->userId,
+            "title" => $json->title,
+            "body" => $json->body
+        ]);
 
         echo Response::json($statusCode, $headers, $body);
     }

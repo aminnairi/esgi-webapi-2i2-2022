@@ -32,6 +32,8 @@ final class Photo
      */
     final public static function post(): void
     {
+        $json = json_decode(file_get_contents("php://input"));
+
         $statusCode = 200;
 
         $headers = [
@@ -41,6 +43,13 @@ final class Photo
         $body = [
             "success" => true
         ];
+
+        PhotoModel::create([
+            "albumId" => $json->albumId,
+            "title" => $json->title,
+            "url" => $json->url,
+            "thumbnailUrl" => $json->thumbnailUrl
+        ]);
 
         echo Response::json($statusCode, $headers, $body);
     }

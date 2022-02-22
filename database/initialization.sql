@@ -9,7 +9,8 @@ CREATE TABLE `users` (
     email VARCHAR(50) NOT NULL,
     phone CHAR(10) NOT NULL,
     website VARCHAR(50) NOT NULL,
-    password CHAR(60) NOT NULL
+    password CHAR(60) NOT NULL,
+    token VARCHAR(255)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `posts` (
@@ -36,7 +37,7 @@ CREATE TABLE `comments` (
 CREATE TABLE `todos` (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     userId INT NOT NULL REFERENCES users(id),
-    title VARCHAR(25) NOT NULL,
+    title TEXT NOT NULL,
     completed BOOLEAN DEFAULT FALSE
 ) ENGINE = InnoDB;
 

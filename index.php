@@ -13,6 +13,15 @@ $route = $_REQUEST["route"] ?? "home";
  */
 $method = $_SERVER["REQUEST_METHOD"];
 
+if ($route === "login") {
+    include "./controllers/login.php";
+
+    if ($method === "POST") {
+        Login::post();
+        die();
+    }
+}
+
 if ($route === "users") {
     include "./controllers/users.php";
 

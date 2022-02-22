@@ -32,6 +32,8 @@ final class Comment
      */
     final public static function post(): void
     {
+        $json = json_decode(file_get_contents("php://input"));
+
         $statusCode = 200;
 
         $headers = [
@@ -41,6 +43,13 @@ final class Comment
         $body = [
             "success" => true
         ];
+
+        CommentModel::create([
+            "postId" => $json->postId,
+            "name" => $json->name,
+            "email" => $json->email,
+            "body" => $json->body
+        ]);
 
         echo Response::json($statusCode, $headers, $body);
     }

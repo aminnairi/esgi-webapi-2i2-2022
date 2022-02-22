@@ -32,6 +32,8 @@ final class Todo
      */
     final public static function post(): void
     {
+        $json = json_decode(file_get_contents("php://input"));
+
         $statusCode = 200;
 
         $headers = [
@@ -41,6 +43,12 @@ final class Todo
         $body = [
             "success" => true
         ];
+
+        TodoModel::create([
+            "userId" => $json->userId,
+            "title" => $json->title,
+            "completed" => $json->completed
+        ]);
 
         echo Response::json($statusCode, $headers, $body);
     }
