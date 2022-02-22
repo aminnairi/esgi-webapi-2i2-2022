@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a410c1ee-9a2d-4ea4-836d-9c3f6611d1e6",
+		"_postman_id": "c599539c-b1f5-4962-a7d0-26f9747a3776",
 		"name": "esgi-webapi-2i2-2022",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -32,6 +32,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Amin NAIRI\",\n    \"email\": \"anairi@esgi.fr\",\n    \"username\": \"aminnairi\",\n    \"website\": \"https://github.com/aminnairi\",\n    \"phone\": \"0102030405\",\n    \"password\": \"motdepasse\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/users",
 							"protocol": "http",
@@ -75,6 +84,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 4,\n    \"title\": \"Nettoyer ses fourches\",\n    \"body\": \"Après une petite sortie off-road dans la forêt du Véxin, vous revenez tout content dans votre garage, vous vous rapprochez de la moto et là c'est le drame : elle a récupéré quasiment toute la boue de la forêt et il y en a partout : notamment sur vos fourches. Comment les nettoyer ?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/posts",
 							"protocol": "http",
@@ -118,6 +136,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 4,\n    \"title\": \"Mon premier album photo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/albums",
 							"protocol": "http",
@@ -161,6 +188,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postId\": 1,\n    \"name\": \"Super produit\",\n    \"body\": \"Réhausseur de guidon parfait pour la Tiger 900, se marie bien avec les protections de leviers de la même marque.\",\n    \"email\": \"anairi@esgi.fr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/comments",
 							"protocol": "http",
@@ -204,6 +240,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 2,\n    \"title\": \"Rajouter une bulle touring\",\n    \"completed\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/todos",
 							"protocol": "http",
@@ -247,6 +292,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"albumId\": 1,\n    \"title\": \"Photo de ma Tiger 900\",\n    \"url\": \"https://url.com/image/tiger-900.png\",\n    \"thumbnailUrl\": \"https://url.com/image/tiger-900-thumbnail.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/photos",
 							"protocol": "http",
@@ -256,6 +310,39 @@
 							"path": [
 								"esgi-webapi-2i2-2022",
 								"photos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login as user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"anairi@esgi.fr\",\n    \"password\": \"motdepasse\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/esgi-webapi-2i2-2022/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"esgi-webapi-2i2-2022",
+								"login"
 							]
 						}
 					},
