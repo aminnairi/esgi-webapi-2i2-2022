@@ -17,12 +17,16 @@ final class User
             "Content-Type" => "application/json"
         ];
 
+        // Récupérer l'en-tête "token" => "4d48b99d4b684b6a1739feea983009fa234918185f6ec8e"
+        // Vérifier si un utilisateur existe pour ce token
+        // si l'utilisateur n'existe pas (pas connecté), on renvoit une erreur UNAUTHORIZED
+
         try {
             $users = UserModel::getAll();
             $body = ["success" => true, "users" => $users];
             echo Response::json($statusCode, $headers, $body);
         } catch (PDOException $exception) {
-            die($exception->getMessage());
+            echo Response::json(500, $headers, ["success" => false, "error" => $exception->getMessage()]);
         }
     }
 
