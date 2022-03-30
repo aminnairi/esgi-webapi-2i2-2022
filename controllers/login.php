@@ -1,13 +1,13 @@
 <?php
 
 include "./library/response.php";
+include "./database/connection.php";
 
 class Login
 {
     public static function post()
     {
-        include "./database/connection.php";
-
+        $databaseConnection = Database::getConnection();
         $json = json_decode(file_get_contents("php://input"));
 
         $getUserQuery = $databaseConnection->prepare("SELECT * FROM users WHERE email = :email;");

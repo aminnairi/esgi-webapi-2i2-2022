@@ -1,10 +1,12 @@
 <?php
 
+include "./database/connection.php";
+
 class PhotoModel
 {
     public static function fetchAll()
     {
-        include "./database/connection.php";
+        $databaseConnection = Database::getConnection();
         $getPhotosQuery = $databaseConnection->query("SELECT * FROM photos;");
         $photos = $getPhotosQuery->fetchAll();
         return $photos;
@@ -12,8 +14,7 @@ class PhotoModel
 
     public static function create($photoToCreate)
     {
-        include "./database/connection.php";
-
+        $databaseConnection = Database::getConnection();
         $createPhotoQuery = $databaseConnection->prepare("INSERT INTO photos(albumId, title, url, thumbnailUrl) VALUES(:albumId, :title, :url, :thumbnailUrl);");
 
         $createPhotoQuery->execute([

@@ -1,10 +1,12 @@
 <?php
 
+include __DIR__ . "/../database/connection.php";
+
 class AlbumModel
 {
     public static function fetchAll()
     {
-        include "./database/connection.php";
+        $databaseConnection = Database::getConnection();
         $getAlbumsQuery = $databaseConnection->query("SELECT * FROM albums");
         $albums = $getAlbumsQuery->fetchAll();
         return $albums;
@@ -12,8 +14,7 @@ class AlbumModel
 
     public static function create($albumToCreate)
     {
-        include "./database/connection.php";
-
+        $databaseConnection = Database::getConnection();
         $createAlbumQuery = $databaseConnection->prepare("INSERT INTO albums(userId, title) VALUES(:userId, :title);");
 
         $createAlbumQuery->execute([

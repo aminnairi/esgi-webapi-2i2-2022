@@ -10,6 +10,7 @@ CREATE TABLE `users` (
     phone CHAR(10) NOT NULL,
     website VARCHAR(50) NOT NULL,
     password CHAR(60) NOT NULL,
+    role VARCHAR(20) NOT NULL,
     token VARCHAR(255)
 ) ENGINE = InnoDB;
 
@@ -49,4 +50,4 @@ CREATE TABLE `photos` (
     thumbnailUrl VARCHAR(50) NOT NULL
 ) ENGINE = InnoDB;
 
-INSERT INTO users(name, username, email, phone, website, password) VALUES('Administrateur', 'ADMINISTRATEUR', 'administrateur@esgi.fr', '0102030405', 'https://github.com/aminnairi', '');
+INSERT INTO users(name, username, email, phone, website, password, role) VALUES('Administrateur', 'ADMINISTRATEUR', 'administrateur@esgi.fr', '0102030405', 'https://github.com/aminnairi', '$2y$10$iEghU5XWM2QyYg3RjPDJGu4b.d4y.3D7X/uvXV8S5MswllCeyGy9K', 'ADMINISTRATOR');

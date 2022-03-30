@@ -1,10 +1,12 @@
 <?php
 
+include "./database/connection.php";
+
 class TodoModel
 {
     public static function fetchAll()
     {
-        include "./database/connection.php";
+        $databaseConnection = Database::getConnection();
         $getTodosQuery = $databaseConnection->query("SELECT * FROM todos;");
         $todos = $getTodosQuery->fetchAll();
         return $todos;
@@ -12,8 +14,7 @@ class TodoModel
 
     public static function create($todoToCreate)
     {
-        include "./database/connection.php";
-
+        $databaseConnection = Database::getConnection();
         $createTodoQuery = $databaseConnection->prepare("INSERT INTO todos(userId, title, completed) VALUES(:userId, :title, :completed);");
 
         $createTodoQuery->execute([

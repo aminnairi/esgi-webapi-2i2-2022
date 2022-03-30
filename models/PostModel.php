@@ -1,11 +1,12 @@
 <?php
 
+include "./database/connection.php";
 
 class PostModel
 {
     public static function getAll()
     {
-        include "./database/connection.php";
+        $databaseConnection = Database::getConnection();
         $getPostsQuery = $databaseConnection->query("SELECT * FROM posts;");
         $posts = $getPostsQuery->fetchAll();
         return $posts;
@@ -13,8 +14,7 @@ class PostModel
 
     public static function create($postToCreate)
     {
-        include "./database/connection.php";
-
+        $databaseConnection = Database::getConnection();
         $createPostQuery = $databaseConnection->prepare("INSERT INTO posts(userId, title, body) VALUES(:userId, :title, :body);");
 
         $createPostQuery->execute([

@@ -33,6 +33,8 @@ final class User
             die();
         }
 
+        // vérifier que le role soit bien ADMINISTRATOR (et pas USER)
+
         try {
             $users = UserModel::getAll();
             $body = ["success" => true, "users" => $users];
@@ -53,6 +55,9 @@ final class User
         $headers = [
             "Content-Type" => "application/json"
         ];
+
+        // vérifier qu'il y ait bien un token
+        // vérifier que le role de l'utilisateur est bien ADMINISTRATOR
 
         $json = json_decode(file_get_contents("php://input"));
         $name = $json->name;
