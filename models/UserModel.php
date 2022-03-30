@@ -21,8 +21,9 @@ class UserModel
         $phone = $userToCreate["phone"];
         $website = $userToCreate["website"];
         $password = password_hash($userToCreate["password"], PASSWORD_BCRYPT);
+        $role = $userToCreate["role"];
 
-        $createUserQuery = $databaseConnection->prepare("INSERT INTO users(name, username, email, phone, website, password) VALUES(:name, :username, :email, :phone, :website, :password);");
+        $createUserQuery = $databaseConnection->prepare("INSERT INTO users(name, username, email, phone, website, password, role) VALUES(:name, :username, :email, :phone, :website, :password, :role);");
 
         $createUserQuery->execute([
             "name" => $name,
@@ -30,14 +31,15 @@ class UserModel
             "email" => $email,
             "phone" => $phone,
             "website" => $website,
-            "password" => $password
+            "password" => $password,
+            "role" => $role
         ]);
     }
 
     public static function getOneByToken(string $token)
     {
         $databaseConnection = Database::getConnection();
-        $getUserQuery = $databaseConnection->prepare("SELECT token FROM users WHERE token = :token");
+        $getUserQuery = $databaseConnection->prepare("SELECT role FROM users WHERE token = :token");
 
         $getUserQuery->execute([
             "token" => $token

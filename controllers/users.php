@@ -17,6 +17,8 @@ final class User
             "Content-Type" => "application/json"
         ];
 
+        // Factoriser le code
+
         $requestHeaders = getallheaders();
 
         if (!isset($requestHeaders["token"])) {
@@ -26,6 +28,9 @@ final class User
 
         $token = $requestHeaders["token"];
 
+        // Headers::has("token");
+        // Headers::get("token");
+
         $user = UserModel::getOneByToken($token);
 
         if (!$user) {
@@ -33,7 +38,12 @@ final class User
             die();
         }
 
-        // vérifier que le role soit bien ADMINISTRATOR (et pas USER)
+        // Validation::hasRole("ADMINISTRATOR", $user);
+
+        if ($user["role"] !== "ADMINISTRATOR") {
+            echo Response::json(403, $responseHeaders, ["success" => false, "error" => "Forbidden"]);
+            die();
+        }
 
         try {
             $users = UserModel::getAll();
@@ -52,12 +62,29 @@ final class User
     {
         $statusCode = 200;
 
-        $headers = [
+        $responseHeaders = [
             "Content-Type" => "application/json"
         ];
 
-        // vérifier qu'il y ait bien un token
-        // vérifier que le role de l'utilisateur est bien ADMINISTRATOR
+        $requestHeaders = getallheaders();
+
+        if (!isset($requestHeaders["token"])) {
+            echo Response::json(401, $responseHeaders, ["success" => false, "error" => "Unauthorized"]);
+            die();
+        }
+
+        $token = $requestHeaders["token"];
+        $user = UserModel::getOneByToken($token);
+
+        if (!$user) {
+            echo Response::json(401, $responseHeaders, ["success" => false, "error" => "Unauthorized"]);
+            die();
+        }
+
+        if ($user["role"] !== "ADMINISTRATOR") {
+            echo Response::json(403, $responseHeaders, ["success" => false, "error" => "Forbidden"]);
+            die();
+        }
 
         $json = json_decode(file_get_contents("php://input"));
         $name = $json->name;
@@ -66,6 +93,7 @@ final class User
         $phone = $json->phone;
         $email = $json->email;
         $password = $json->password;
+        $role = $json->role;
 
         UserModel::create([
             "name" => $name,
@@ -73,14 +101,15 @@ final class User
             "website" => $website,
             "phone" => $phone,
             "email" => $email,
-            "password" => $password
+            "password" => $password,
+            "role" => $role
         ]);
 
         $body = [
             "success" => true
         ];
 
-        echo Response::json($statusCode, $headers, $body);
+        echo Response::json($statusCode, $responseHeaders, $body);
     }
 }
 
