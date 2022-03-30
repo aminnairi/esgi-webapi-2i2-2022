@@ -1,7 +1,7 @@
 <?php
 
-include "./library/response.php";
-include "./models/AlbumModel.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../models/AlbumModel.php";
 
 final class Album
 {

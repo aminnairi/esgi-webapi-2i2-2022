@@ -14,7 +14,7 @@ $route = $_REQUEST["route"] ?? "home";
 $method = $_SERVER["REQUEST_METHOD"];
 
 if ($route === "login") {
-    include "./controllers/login.php";
+    include __DIR__ . "/controllers/login.php";
 
     if ($method === "POST") {
         Login::post();
@@ -23,7 +23,7 @@ if ($route === "login") {
 }
 
 if ($route === "users") {
-    include "./controllers/users.php";
+    include __DIR__ . "/controllers/users.php";
 
     if ($method === "GET") {
         User::get();
@@ -37,7 +37,7 @@ if ($route === "users") {
 }
 
 if ($route === "posts") {
-    include "./controllers/posts.php";
+    include __DIR__ . "/controllers/posts.php";
 
     if ($method === "GET") {
         Post::get();
@@ -51,7 +51,7 @@ if ($route === "posts") {
 }
 
 if ($route === "comments") {
-    include "./controllers/comments.php";
+    include __DIR__ . "/controllers/comments.php";
 
     if ($method === "GET") {
         Comment::get();
@@ -65,7 +65,7 @@ if ($route === "comments") {
 }
 
 if ($route === "todos") {
-    include "./controllers/todos.php";
+    include __DIR__ . "/controllers/todos.php";
 
     if ($method === "GET") {
         Todo::get();
@@ -79,7 +79,7 @@ if ($route === "todos") {
 }
 
 if ($route === "albums") {
-    include "./controllers/albums.php";
+    include __DIR__ . "/controllers/albums.php";
 
     if ($method === "GET") {
         Album::get();
@@ -93,7 +93,7 @@ if ($route === "albums") {
 }
 
 if ($route === "photos") {
-    include "./controllers/photos.php";
+    include __DIR__ . "/controllers/photos.php";
 
     if ($method === "GET") {
         Photo::get();
@@ -107,6 +107,6 @@ if ($route === "photos") {
 }
 
 {
-    include "./library/response.php";
+    include __DIR__ . "/library/response.php";
     echo Response::json(404, ["Content-Type" => "application/json"], "Not found");
 }

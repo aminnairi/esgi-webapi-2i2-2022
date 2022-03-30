@@ -1,7 +1,7 @@
 <?php
 
-include "./library/response.php";
-include "./models/CommentModel.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../models/CommentModel.php";
 
 final class Comment
 {

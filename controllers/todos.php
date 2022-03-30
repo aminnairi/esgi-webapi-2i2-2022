@@ -1,7 +1,7 @@
 <?php
 
-include "./library/response.php";
-include "./models/TodoModel.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../models/TodoModel.php";
 
 final class Todo
 {

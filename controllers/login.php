@@ -1,7 +1,7 @@
 <?php
 
-include "./library/response.php";
-include "./database/connection.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../database/connection.php";
 
 class Login
 {

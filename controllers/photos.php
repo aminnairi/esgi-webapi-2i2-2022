@@ -1,7 +1,7 @@
 <?php
 
-include "./library/response.php";
-include "./models/PhotoModel.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../models/PhotoModel.php";
 
 final class Photo
 {

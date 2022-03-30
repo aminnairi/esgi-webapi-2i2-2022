@@ -1,7 +1,7 @@
 <?php
 
-include "./library/response.php";
-include "./models/PostModel.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../models/PostModel.php";
 
 final class Post
 {

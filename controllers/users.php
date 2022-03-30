@@ -1,7 +1,9 @@
 <?php
 
-include "./library/response.php";
-include "./models/UserModel.php";
+include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../library/headers.php";
+include __DIR__ . "/../validations/user.php";
+include __DIR__ . "/../models/UserModel.php";
 
 final class User
 {
@@ -17,20 +19,12 @@ final class User
             "Content-Type" => "application/json"
         ];
 
-        // Factoriser le code
-
-        $requestHeaders = getallheaders();
-
-        if (!isset($requestHeaders["token"])) {
+        if (!Headers::has("token")) {
             echo Response::json(401, $responseHeaders, ["success" => false, "error" => "Unauthorized"]);
             die();
         }
 
-        $token = $requestHeaders["token"];
-
-        // Headers::has("token");
-        // Headers::get("token");
-
+        $token = Headers::get("token");
         $user = UserModel::getOneByToken($token);
 
         if (!$user) {
@@ -38,9 +32,7 @@ final class User
             die();
         }
 
-        // Validation::hasRole("ADMINISTRATOR", $user);
-
-        if ($user["role"] !== "ADMINISTRATOR") {
+        if (!UserValidation::isAdministrator($user)) {
             echo Response::json(403, $responseHeaders, ["success" => false, "error" => "Forbidden"]);
             die();
         }
@@ -66,14 +58,12 @@ final class User
             "Content-Type" => "application/json"
         ];
 
-        $requestHeaders = getallheaders();
-
-        if (!isset($requestHeaders["token"])) {
+        if (Headers::has("token")) {
             echo Response::json(401, $responseHeaders, ["success" => false, "error" => "Unauthorized"]);
             die();
         }
 
-        $token = $requestHeaders["token"];
+        $token = Headers::get("token");
         $user = UserModel::getOneByToken($token);
 
         if (!$user) {
@@ -81,7 +71,7 @@ final class User
             die();
         }
 
-        if ($user["role"] !== "ADMINISTRATOR") {
+        if (!UserValidation::isAdministrator($user)) {
             echo Response::json(403, $responseHeaders, ["success" => false, "error" => "Forbidden"]);
             die();
         }

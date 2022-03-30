@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c599539c-b1f5-4962-a7d0-26f9747a3776",
+		"_postman_id": "81db0f1f-9457-43d2-b27b-fc7d4fdd0f4e",
 		"name": "esgi-webapi-2i2-2022",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,13 @@
 					"name": "get all users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "e1242ae235499fd6d90d400a962515a5e8cadc8fc945ebcb06e6e7d6cfec4314f2af13b1d85bd6aed6b8dd4631e20734e1e0191414345edb6183012ba067358f",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i2-2022/users",
 							"protocol": "http",
@@ -31,10 +37,16 @@
 					"name": "create a new user",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "dfe3433a7ef9b2d1bbe61df243667ebe0673eef4104f3bf6ed2ac8c548857b0f43ea3834ca2d35ed056e9c737d28d8a56ca982da934b3ebe914fb84c31df0b18",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Amin NAIRI\",\n    \"email\": \"anairi@esgi.fr\",\n    \"username\": \"aminnairi\",\n    \"website\": \"https://github.com/aminnairi\",\n    \"phone\": \"0102030405\",\n    \"password\": \"motdepasse\"\n}",
+							"raw": "{\n    \"name\": \"Frédéric SANANES\",\n    \"email\": \"fsananes@esgi.fr\",\n    \"username\": \"fsananes\",\n    \"website\": \"https://github.com/aminnairi\",\n    \"phone\": \"0102030405\",\n    \"password\": \"motdepasse\",\n    \"role\": \"USER\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
